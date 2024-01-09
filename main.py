@@ -40,7 +40,22 @@ root.title("Calculator")
 entry = tk.Entry(root, width=20, font=('Arial', 18), borderwidth=5)
 entry.grid(row=0, column=0, columnspan=4)
 
-# Placeholder
-button_layout = []
+# Define button layout
+button_layout = [
+    ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
+    ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
+    ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
+    ('0', 4, 0), ('.', 4, 1), ('=', 4, 2), ('+', 4, 3),
+    ('C', 5, 0)
+]
+
+# Buttons based on the button layout and attach functions to them
+for (text, row, col) in button_layout:
+    button = tk.Button(root, text=text, padx=20, pady=20, font=('Arial', 14), command=lambda t=text: button_click(t))
+    button.grid(row=row, column=col)
+
+# 'C' button and attach the clear_entry function to it
+clear_button = tk.Button(root, text='C', padx=20, pady=20, font=('Arial', 14), command=clear_entry)
+clear_button.grid(row=5, column=0)
 
 root.mainloop()
