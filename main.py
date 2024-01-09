@@ -4,6 +4,18 @@ import tkinter as tk
 def clear_entry():
     entry.delete(0, tk.END)
 
+
+# Function to evaluate and display the result
+def evaluate_expression():
+    try:
+        result = eval(entry.get()) # it will evaluate the expression entered in the entry widget
+        entry.delete(0, tk.END)  # Clear the entry widget and insert the result in the widget
+        entry.insert(tk.END, str(result))
+    except Exception as e:
+        entry.delete(0, tk.END) # If an error occurs during evaluation,It will clear the entry widget and display "Error"
+        entry.insert(tk.END, "Error")
+
+
 # Function to handle button clicks
 def button_click(value):
     current = entry.get()
